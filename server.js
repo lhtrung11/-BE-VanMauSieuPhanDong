@@ -1,28 +1,23 @@
-//dotenv
-require("dotenv").config();
+const dotenv = require('dotenv');
+// USING DOTENV
+dotenv.config();
 
-// Connect DB
-const { connectDB } = require("./configs/db");
+const { connectDB } = require('./configs/db');
+const constant = require('./constants');
+const route = require('./routers');
+const express = require('express');
+const expressValidator = require('express-validator');
+const cors = require('cors');
+
+// CONNECT TO DATABASE
 connectDB();
 
-const route = require("./routers");
-
-const express = require("express");
-const cors = require("cors");
-
+// APP INIT
 const app = express();
-
-// Cors
 app.use(cors());
-
-// Body Parser
 app.use(express.json());
-
-//Route
 route(app);
 
-const port = process.env.APP_PORT;
-
-app.listen(port, () => {
-    console.log(`server is running on port ${port}`);
+app.listen(constant.variable.env.port, () => {
+    console.log(`server is running on port ${constant.variable.env.port}`);
 });
