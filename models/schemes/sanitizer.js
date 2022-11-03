@@ -3,10 +3,6 @@ const { message, variable } = require('../../constants');
 
 const username = {
     in: ['body'],
-    errorMessage: `Username ${message.REQUIRED}`,
-    custom: {
-        options,
-    },
 };
 
 const password = {
@@ -17,3 +13,5 @@ const password = {
 const email = {
     in: ['body'],
 };
+
+module.exports = { username, password, email };
