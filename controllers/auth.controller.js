@@ -2,17 +2,18 @@ const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const service = require('../services/auth.service');
+const { checkSchema, validationResult } = require('express-validator');
 
 exports.register = async (req, res, next) => {
     try {
-        let { input, user, order, errors } = req;
-        let output = null;
-        if (errors.isEmpty()) {
-            output = await service.register(input, user, order);
-        } else {
-            output = errors.array();
+        const errors = validationResult(req);
+        console.log(errors);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+            });
         }
-        res.status(200).json(output);
+        res.status(200).json(req.body);
     } catch (error) {
         res.json(error);
     }

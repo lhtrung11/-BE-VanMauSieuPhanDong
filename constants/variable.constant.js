@@ -26,6 +26,8 @@ const section = {
 
 const path = {
     register: '/api/auth/register',
+    login: '/api/auth/login',
+    refresh: '/api/auth/refresh',
 };
 
 const regex = {
