@@ -6,13 +6,6 @@ const { checkSchema, validationResult } = require('express-validator');
 
 exports.register = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-        console.log(errors);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array(),
-            });
-        }
         res.status(200).json(req.body);
     } catch (error) {
         res.json(error);

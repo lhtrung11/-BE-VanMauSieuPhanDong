@@ -1,21 +1,46 @@
 const { message, variable } = require('../../constants');
 
+// FIELD VALIDATE
 const username = {
-    in: ['body'],
-    notEmpty: true,
-    errorMessage: 'username field cannot be empty',
+    exists: {
+        options: true,
+        errorMessage: 'Username is required!',
+        bail: true,
+    },
+    matches: {
+        options: variable.regex.username,
+        errorMessage: message.USERNAME_INVALID,
+        bail: true,
+    },
 };
 
 const password = {
-    // in: ['body'],
-    // errorMessage: `Password ${message.REQUIRED}`,
-    notEmpty: true,
-    errorMessage: 'password field cannot be empty',
+    exists: {
+        options: true,
+        errorMessage: 'Password is required!',
+        bail: true,
+    },
+    matches: {
+        options: variable.regex.password,
+        errorMessage: message.PASSWORD_INVALID,
+        bail: true,
+    },
 };
 
 const email = {
-    notEmpty: true,
-    errorMessage: 'email field cannot be empty',
+    matches: {
+        options: variable.regex.email,
+        errorMessage: message.EMAIL_INVALID,
+        bail: true,
+    },
 };
 
-module.exports = { username, password, email };
+// OPTION VALIDATE
+
+// this field is not required, but it must be corrected while passing in
+const requiredOption = {
+    optional: true,
+    bail: true,
+};
+
+module.exports = { username, password, email, requiredOption };

@@ -31,8 +31,9 @@ const path = {
 };
 
 const regex = {
-    username: '/^[a-zA-Z0-9_-]{3,16}$/',
-    password: '',
+    username: /^[a-zA-Z0-9_-]{3,16}$/,
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+    email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
 };
 
 module.exports = { env, role, section, path, regex };
