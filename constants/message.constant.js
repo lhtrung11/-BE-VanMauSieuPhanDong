@@ -8,6 +8,12 @@ const message = {
     SUCCESS: 'OK',
     FAIL: 'ERR',
 
+    // Description
+    COMPLETE_RESPONSE: 'Response Successfully',
+    VALIDATE_ERROR: 'Validation Failed',
+    REQUIRE_PERMISSION: 'You do not have permission to perform this action',
+    NOT_FOUND: 'Not found',
+
     // Validate
     REQUIRED: 'required',
     USERNAME_INVALID:
