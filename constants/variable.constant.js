@@ -12,16 +12,48 @@ const role = {
     admin: '004',
 };
 
-const section = {
-    config: 0,
-    constant: 1,
-    controller: 2,
-    helper: 3,
-    middleware: 4,
-    model: 5,
-    router: 6,
-    service: 7,
-    entrance: 8,
+const title = {
+    guest: 'Anonymous',
+};
+
+const defaultNickname = {
+    animals: [
+        'nightingale',
+        'jellyfish',
+        'eel',
+        'platypus',
+        'zebra',
+        'hamster',
+        'mole',
+        'racoon',
+        'crab',
+        'octopus',
+        'scorpion',
+        'deer',
+        'koala',
+    ],
+    color: [
+        'purple',
+        'grey',
+        'yellow',
+        'cyan',
+        'brown',
+        'silver',
+        'green',
+        'white',
+        'orange',
+        'gold',
+        'dark',
+        'pink',
+    ],
+};
+
+const status = {
+    account: {
+        INACTIVE: 0,
+        ACTIVE: 1,
+        BANNED: 2,
+    },
 };
 
 const path = {
@@ -116,4 +148,13 @@ const httpStatus = {
     NETWORK_AUTHENTICATION_REQUIRED: 511,
 };
 
-module.exports = { env, role, section, path, regex, httpStatus };
+module.exports = {
+    env,
+    role,
+    status,
+    path,
+    regex,
+    httpStatus,
+    title,
+    defaultNickname,
+};
