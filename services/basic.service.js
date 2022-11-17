@@ -6,3 +6,12 @@ exports.create = async (Model, input) => {
         throw error;
     }
 };
+
+exports.findById = async (Model, id) => {
+    try {
+        const result = await Model.findById(id);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+};

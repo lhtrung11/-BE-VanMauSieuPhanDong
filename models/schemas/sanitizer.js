@@ -1,4 +1,6 @@
 const { message, variable } = require('../../constants');
+const Account = require('../account.model');
+// const basicService = require('../../services/basic.service');
 
 // FIELD VALIDATE
 const username = {
@@ -11,6 +13,10 @@ const username = {
         options: variable.regex.username,
         errorMessage: message.USERNAME_INVALID,
         bail: true,
+    },
+    custom: {
+        options: (username) => !Account.findOne({ username }),
+        errorMessage: message.USERNAME_DUPLICATED,
     },
 };
 
