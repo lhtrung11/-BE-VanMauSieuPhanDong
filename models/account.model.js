@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { variable, message } = require('../constants');
 const bcrypt = require('bcryptjs');
+const random = require('../helpers/random.helper');
 
 const accountSchema = new mongoose.Schema(
     {
@@ -14,17 +15,27 @@ const accountSchema = new mongoose.Schema(
             type: String,
             trim: true,
             required: true,
+            default: variable.defaultValue.defaultPassword,
+        },
+        email: {
+            type: String,
+            trim: true,
         },
         title: {
             type: String,
             trim: true,
             default: variable.title.guest,
         },
-        avatar: { type: String, required: true },
+        avatar: {
+            type: String,
+            required: true,
+            default: variable.defaultValue.defaultFile.defaultAvatarValue,
+        },
         role: { type: String, required: true, default: variable.role.guest },
         nickname: {
             type: String,
             required: true,
+            default: random.nickname,
         },
         status: {
             type: Number,
@@ -36,12 +47,12 @@ const accountSchema = new mongoose.Schema(
 );
 
 accountSchema.pre('save', function (next) {
-    let user = this;
-    bcrypt.hash(user.password, 10, function (error, hash) {
+    let account = this;
+    bcrypt.hash(account.password, 10, function (error, hash) {
         if (error) {
             return next(error);
         } else {
-            user.password = hash;
+            account.password = hash;
             next();
         }
     });

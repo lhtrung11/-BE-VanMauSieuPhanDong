@@ -16,36 +16,43 @@ const title = {
     guest: 'Anonymous',
 };
 
-const defaultNickname = {
-    animals: [
-        'nightingale',
-        'jellyfish',
-        'eel',
-        'platypus',
-        'zebra',
-        'hamster',
-        'mole',
-        'racoon',
-        'crab',
-        'octopus',
-        'scorpion',
-        'deer',
-        'koala',
-    ],
-    color: [
-        'purple',
-        'grey',
-        'yellow',
-        'cyan',
-        'brown',
-        'silver',
-        'green',
-        'white',
-        'orange',
-        'gold',
-        'dark',
-        'pink',
-    ],
+const defaultValue = {
+    defaultNickname: {
+        animals: [
+            'nightingale',
+            'jellyfish',
+            'eel',
+            'platypus',
+            'zebra',
+            'hamster',
+            'mole',
+            'racoon',
+            'crab',
+            'octopus',
+            'scorpion',
+            'deer',
+            'koala',
+        ],
+        colors: [
+            'purple',
+            'grey',
+            'yellow',
+            'cyan',
+            'brown',
+            'silver',
+            'green',
+            'white',
+            'orange',
+            'gold',
+            'dark',
+            'pink',
+        ],
+    },
+    defaultFile: {
+        defaultAvatarValue: 'default',
+        defaultAvatarUrl: '../assets/images',
+    },
+    defaultPassword: 'guest123',
 };
 
 const status = {
@@ -156,5 +163,5 @@ module.exports = {
     regex,
     httpStatus,
     title,
-    defaultNickname,
+    defaultValue,
 };

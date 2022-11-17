@@ -1,4 +1,8 @@
-const { checkSchema, validationResult } = require('express-validator');
+const {
+    checkSchema,
+    validationResult,
+    matchedData,
+} = require('express-validator');
 const { message, variable } = require('../constants');
 
 module.exports = (schema) => {
@@ -18,6 +22,11 @@ module.exports = (schema) => {
                         },
                     });
             }
+
+            req.input = matchedData(req, {
+                includeOptionals: true,
+                onlyValidData: true,
+            });
             next();
         },
     ];

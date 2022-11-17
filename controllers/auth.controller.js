@@ -1,16 +1,23 @@
 // const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const service = require('../services/auth.service');
-const { checkSchema, validationResult } = require('express-validator');
+const Account = require('../models/account.model');
+const authService = require('../services/auth.service');
+const basicService = require('../services/basic.service');
+const random = require('../helpers/random.helper');
+const { variable, message } = require('../constants');
 
 exports.register = async (req, res, next) => {
-    try {
-        const data = await service.register(req.input);
-        res.status(200).json(data);
-    } catch (error) {
-        res.json(error);
-    }
+    const output = await basicService.create(Account, req.input);
+    res.status(variable.httpStatus[output.catch ? 'CONFLICT' : 'CREATED']).json(
+        {
+            description:
+                message[output.catch ? 'CREATE_FAIL' : 'CREATE_SUCCESS'],
+            [output.catch ? 'errors' : 'data']: output.catch
+                ? output.catch
+                : output,
+        }
+    );
 };
 
 exports.login = async (req, res, next) => {

@@ -14,17 +14,19 @@ const randomNumber = (min, max) => {
 };
 
 const randomNickname = () => {
-    const test = `${randomItem(
-        variable.defaultNickname.color
+    return `${randomItem(
+        variable.defaultValue.defaultNickname.colors
     )}${capitalizedFirstLetter(
-        randomItem(variable.defaultNickname.animals)
+        randomItem(variable.defaultValue.defaultNickname.animals)
     )}${randomNumber(0, 99999).toString().padStart(5, '0')}`;
-    console.log(test);
-    return test;
 };
 
 const randomUsername = () => {
-    return;
+    const min = 0;
+    const max = 9999999999; // 15 so
+    return `guest${randomNumber(min, max)
+        .toString()
+        .padStart(max.toString().length, '0')}`;
 };
 
 const randomPassword = () => {
@@ -34,7 +36,7 @@ const randomPassword = () => {
 const random = {
     nickname: randomNickname,
     username: randomUsername,
-    password: randomPassword,
+    // password: randomPassword,
 };
 
 module.exports = random;

@@ -8,6 +8,16 @@ const message = {
     SUCCESS: 'OK',
     FAIL: 'ERR',
 
+    // CRUD detail
+    CREATE_SUCCESS: 'Create data successfully',
+    CREATE_FAIL: 'Unable to create data',
+    UPDATE_SUCCESS: 'Update data successfully',
+    UPDATE_FAIL: 'Unable to update data',
+    DELETE_SUCCESS: 'Delete data successfully',
+    DELETE_FAIL: 'Unable to delete data',
+    READ_SUCCESS: 'Get data successfully',
+    READ_FAIL: 'Unable to get data',
+
     // Description
     COMPLETE_RESPONSE: 'Response Successfully',
     VALIDATE_ERROR: 'Validation Failed',
