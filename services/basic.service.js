@@ -1,9 +1,12 @@
+const errorFormatter = require('../helpers/errorFormatter.helper');
+
 exports.create = async (Model, input) => {
+    const result = { data: null, errors: [] };
     try {
-        const result = await Model.create(input);
+        result.data = await Model.create(input);
         return result;
     } catch (error) {
-        throw error;
+        return errorFormatter(result, error);
     }
 };
 

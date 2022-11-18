@@ -15,8 +15,12 @@ const username = {
         bail: true,
     },
     custom: {
-        options: (username) => !Account.findOne({ username }),
-        errorMessage: message.USERNAME_DUPLICATED,
+        options: (username) =>
+            Account.findOne({ username }).then((account) => {
+                if (account) {
+                    return Promise.reject(message.USERNAME_DUPLICATED);
+                }
+            }),
     },
 };
 

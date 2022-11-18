@@ -2,21 +2,35 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Account = require('../models/account.model');
+const AccountIndex = require('../models/accountIndex.model');
 const authService = require('../services/auth.service');
 const basicService = require('../services/basic.service');
 const random = require('../helpers/random.helper');
 const { variable, message } = require('../constants');
+const response = require('../helpers/responseHandler.helper');
 
 exports.register = async (req, res, next) => {
-    const output = await basicService.create(Account, req.input);
-    res.status(variable.httpStatus[output.catch ? 'CONFLICT' : 'CREATED']).json(
-        {
-            description:
-                message[output.catch ? 'CREATE_FAIL' : 'CREATE_SUCCESS'],
-            [output.catch ? 'errors' : 'data']: output.catch
-                ? output.catch
-                : output,
-        }
+    const output = await basicService.create(Account, {
+        ...req.input,
+        nickname: req.input.username,
+        role: variable.role.user,
+        title: variable.title.beLoLiNoChill,
+    });
+    if (!output.errors)
+        async (result) => {
+            const outputIndex = await basicService.create(AccountIndex, {
+                accountId: result._id,
+            });
+            console.log(outputIndex);
+        };
+
+    response(
+        variable.httpStatus.CREATED,
+        variable.httpStatus.CONFLICT,
+        message.CREATE_SUCCESS,
+        message.CREATE_FAIL,
+        output,
+        res
     );
 };
 

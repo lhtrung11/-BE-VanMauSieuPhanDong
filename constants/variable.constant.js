@@ -14,6 +14,17 @@ const role = {
 
 const title = {
     guest: 'Anonymous',
+    turtleDog: 'Turtle Dog',
+    holyGamingChair: 'The HOLY gaming chair',
+    threeButtsInOneMouth: 'Three Butts IN One Mouth',
+    colorKiller: 'Color Killer',
+    theFarmerUnderTheWell: 'The Farmer Under The Well',
+    doYouWantToBuildASnowMan: 'Do you want to build a SnowMan',
+    baseBricks: 'Base bricks',
+    beLoLiNoChill: 'Be Lo Li No Chill',
+    imHungry: 'Im Hungry',
+    walkingToilet: 'Walking toilet',
+    sickAndDump: 'sickAndDump',
 };
 
 const defaultValue = {
@@ -60,6 +71,10 @@ const status = {
         INACTIVE: 0,
         ACTIVE: 1,
         BANNED: 2,
+    },
+    deleted: {
+        FALSE: 0,
+        TRUE: 1,
     },
 };
 
