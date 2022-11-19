@@ -27,6 +27,12 @@ const title = {
     sickAndDump: 'sickAndDump',
 };
 
+const field = {
+    username: 'username',
+    password: 'password',
+    email: 'email',
+};
+
 const defaultValue = {
     defaultNickname: {
         animals: [
@@ -82,6 +88,16 @@ const path = {
     register: '/api/auth/register',
     login: '/api/auth/login',
     refresh: '/api/auth/refresh',
+};
+
+const checkIsExistedType = {
+    true: true,
+    false: false,
+};
+
+const matchesType = {
+    bcrypt: 'bcrypt',
+    common: 'common',
 };
 
 const regex = {
@@ -179,4 +195,7 @@ module.exports = {
     httpStatus,
     title,
     defaultValue,
+    field,
+    checkIsExistedType,
+    matchesType,
 };

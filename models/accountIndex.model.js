@@ -5,7 +5,7 @@ const random = require('../helpers/random.helper');
 
 const accountIndexSchema = new mongoose.Schema(
     {
-        accountId: {
+        entityId: {
             type: mongoose.Types.ObjectId,
             ref: 'account',
             required: true,

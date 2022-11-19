@@ -10,19 +10,16 @@ const { variable, message } = require('../constants');
 const response = require('../helpers/responseHandler.helper');
 
 exports.register = async (req, res, next) => {
-    const output = await basicService.create(Account, {
-        ...req.input,
-        nickname: req.input.username,
-        role: variable.role.user,
-        title: variable.title.beLoLiNoChill,
-    });
-    if (!output.errors)
-        async (result) => {
-            const outputIndex = await basicService.create(AccountIndex, {
-                accountId: result._id,
-            });
-            console.log(outputIndex);
-        };
+    const output = await basicService.create(
+        Account,
+        {
+            ...req.input,
+            nickname: req.input.username,
+            role: variable.role.user,
+            title: variable.title.beLoLiNoChill,
+        },
+        AccountIndex
+    );
 
     response(
         variable.httpStatus.CREATED,

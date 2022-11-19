@@ -1,6 +1,5 @@
+const bcrypt = require('bcryptjs');
 const { message, variable } = require('../../constants');
-const Account = require('../account.model');
-// const basicService = require('../../services/basic.service');
 
 // FIELD VALIDATE
 const username = {
@@ -14,14 +13,7 @@ const username = {
         errorMessage: message.USERNAME_INVALID,
         bail: true,
     },
-    custom: {
-        options: (username) =>
-            Account.findOne({ username }).then((account) => {
-                if (account) {
-                    return Promise.reject(message.USERNAME_DUPLICATED);
-                }
-            }),
-    },
+    bail: true,
 };
 
 const password = {
@@ -35,6 +27,7 @@ const password = {
         errorMessage: message.PASSWORD_INVALID,
         bail: true,
     },
+    bail: true,
 };
 
 const email = {
@@ -53,4 +46,50 @@ const requiredOption = {
     bail: true,
 };
 
-module.exports = { username, password, email, requiredOption };
+// find documents have this value of the input field in database and return result base on type of condition
+const isExisted = (field, Model, isDuplicated) => {
+    const customSanitizer = {
+        custom: {
+            options: (value) =>
+                Model.findOne({ [field]: value }).then((result) => {
+                    if (result && isDuplicated) {
+                        return Promise.reject(
+                            message[`${field.toUpperCase()}_DUPLICATED`]
+                        );
+                    }
+                    if (!result && !isDuplicated) {
+                        return Promise.reject(
+                            message[`${field.toUpperCase()}_NOT_FOUND`]
+                        );
+                    }
+                }),
+            bail: true,
+        },
+    };
+    return customSanitizer;
+};
+
+// compare between 2 values with type of condition
+const isMatched = (field, comparedValue, matchesType) => {
+    const customSanitizer = {
+        custom: {
+            options: (value) => {
+                let result;
+                switch (matchesType) {
+                    case variable.matchesType.bcrypt:
+                        result = bcrypt.compareSync(value, comparedValue);
+                        break;
+                    case variable.matchesType.common:
+                        // result = (value === comparedValue)
+                        break;
+                    default:
+                        result = value === comparedValue;
+                }
+                if (!result)
+                    return Promise.reject(message[`${field.toUpperCase()}_`]);
+            },
+        },
+    };
+    return customSanitizer;
+};
+module.exports = { username, password, email, requiredOption, isExisted };

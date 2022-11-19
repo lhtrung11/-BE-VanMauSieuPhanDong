@@ -6,7 +6,6 @@ const { connectDB } = require('./configs/db');
 const constant = require('./constants');
 const route = require('./routers');
 const express = require('express');
-const expressValidator = require('express-validator');
 const cors = require('cors');
 
 // CONNECT TO DATABASE
