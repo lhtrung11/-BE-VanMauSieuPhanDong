@@ -24,7 +24,6 @@ exports.login = {
     ),
     password: sanitizer.isMatched(
         variable.field.password,
-        value,
         variable.matchesType.bcrypt
     ),
 };

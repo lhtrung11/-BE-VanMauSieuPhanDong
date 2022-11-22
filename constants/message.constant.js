@@ -18,6 +18,10 @@ const message = {
     READ_SUCCESS: 'Get data successfully',
     READ_FAIL: 'Unable to get data',
 
+    // ACTION detail
+    LOGIN_SUCCESS: '',
+    LOGIN_FAILED: '',
+
     // Description
     COMPLETE_RESPONSE: 'Response Successfully',
     VALIDATE_ERROR: 'Validation Failed',

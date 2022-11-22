@@ -1,7 +1,20 @@
-exports.register = async (input, user, order) => {
+const jwt = require('jsonwebtoken');
+const { variable } = require('../constants');
+
+const createToken = (data, options) => {
+    return jwt.sign(data, variable.env.key, options);
+    // return token = jwt.sign(
+    //     { userId: user._id, role: user.role },
+    //     process.env.APP_SECRET,
+    //     { expiresIn: '2h' }
+    // );
+};
+
+exports.login = () => {
     try {
-        // console.log(`Input: ${input}, User: ${user}`);
-        return { input: input, user: user, order: order };
+        const result = { data: null, errors: [] };
+
+        return result;
     } catch (error) {}
 };
 // const register = () => {

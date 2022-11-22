@@ -3,6 +3,7 @@
 
 const env = {
     port: process.env.APP_PORT,
+    key: process.env.TOKEN_KEY,
 };
 
 const role = {

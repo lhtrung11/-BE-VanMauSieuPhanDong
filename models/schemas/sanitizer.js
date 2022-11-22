@@ -50,17 +50,19 @@ const requiredOption = {
 const isExisted = (field, Model, isDuplicated) => {
     const customSanitizer = {
         custom: {
-            options: (value) =>
+            options: (value, { req }) =>
                 Model.findOne({ [field]: value }).then((result) => {
-                    if (result && isDuplicated) {
+                    if (isDuplicated && result) {
                         return Promise.reject(
                             message[`${field.toUpperCase()}_DUPLICATED`]
                         );
                     }
-                    if (!result && !isDuplicated) {
-                        return Promise.reject(
-                            message[`${field.toUpperCase()}_NOT_FOUND`]
-                        );
+                    if (!isDuplicated) {
+                        if (!result)
+                            return Promise.reject(
+                                message[`${field.toUpperCase()}_NOT_FOUND`]
+                            );
+                        else req.private = { ...result };
                     }
                 }),
             bail: true,
@@ -70,23 +72,25 @@ const isExisted = (field, Model, isDuplicated) => {
 };
 
 // compare between 2 values with type of condition
-const isMatched = (field, comparedValue, matchesType) => {
+const isMatched = (field, matchesType) => {
     const customSanitizer = {
         custom: {
-            options: (value) => {
+            options: (value, { req }) => {
                 let result;
                 switch (matchesType) {
                     case variable.matchesType.bcrypt:
-                        result = bcrypt.compareSync(value, comparedValue);
+                        result = bcrypt.compareSync(value, req.private[field]);
                         break;
                     case variable.matchesType.common:
                         // result = (value === comparedValue)
                         break;
                     default:
-                        result = value === comparedValue;
+                    // result = value === req.body[field];
                 }
                 if (!result)
-                    return Promise.reject(message[`${field.toUpperCase()}_`]);
+                    return Promise.reject(
+                        message[`${field.toUpperCase()}_NOT_MATCH`]
+                    );
             },
         },
     };
