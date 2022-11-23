@@ -19,8 +19,8 @@ const message = {
     READ_FAIL: 'Unable to get data',
 
     // ACTION detail
-    LOGIN_SUCCESS: '',
-    LOGIN_FAILED: '',
+    LOGIN_SUCCESS: 'Welcome',
+    LOGIN_FAILED: 'Login failed',
 
     // Description
     COMPLETE_RESPONSE: 'Response Successfully',

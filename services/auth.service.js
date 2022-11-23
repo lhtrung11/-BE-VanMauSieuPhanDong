@@ -3,30 +3,17 @@ const { variable } = require('../constants');
 
 const createToken = (data, options) => {
     return jwt.sign(data, variable.env.key, options);
-    // return token = jwt.sign(
-    //     { userId: user._id, role: user.role },
-    //     process.env.APP_SECRET,
-    //     { expiresIn: '2h' }
-    // );
 };
 
-exports.login = () => {
+exports.login = (ModelHistory, input) => {
     try {
         const result = { data: null, errors: [] };
-
+        result.data = {
+            accessToken: createToken({ input }, { expiredIn: '2h' }),
+            refreshToken: createToken({ input }, { expiredIn: '7d' }),
+        };
         return result;
-    } catch (error) {}
+    } catch (error) {
+        return errorFormatter(result, error);
+    }
 };
-// const register = () => {
-//     try {
-//         return 'register service';
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
-// const authService = {
-//     register: register,
-// };
-
-// module.exports = authService;
