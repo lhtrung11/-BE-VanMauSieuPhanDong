@@ -76,10 +76,15 @@ const isMatched = (field, matchesType) => {
     const customSanitizer = {
         custom: {
             options: (value, { req }) => {
-                let result;
+                let result = null;
                 switch (matchesType) {
                     case variable.matchesType.bcrypt:
-                        result = bcrypt.compareSync(value, req.private[field]);
+                        if (req.private) {
+                            result = bcrypt.compareSync(
+                                value,
+                                req.private[field]
+                            );
+                        }
                         break;
                     case variable.matchesType.common:
                         // result = (value === comparedValue)
@@ -96,4 +101,11 @@ const isMatched = (field, matchesType) => {
     };
     return customSanitizer;
 };
-module.exports = { username, password, email, requiredOption, isExisted };
+module.exports = {
+    username,
+    password,
+    email,
+    requiredOption,
+    isExisted,
+    isMatched,
+};

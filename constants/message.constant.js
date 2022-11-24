@@ -33,8 +33,10 @@ const message = {
     USERNAME_INVALID:
         'The username between 3 and 16 characters, allowing alphanumeric characters and hyphens and underscores!',
     USERNAME_DUPLICATED: 'This username is already in use!',
+    USERNAME_NOT_FOUND: 'Incorrect username',
     PASSWORD_INVALID:
         'The password must contains 8 characters minimum, at least one letter and one number!',
+    PASSWORD_NOT_MATCH: 'Password does not match',
     EMAIL_INVALID: 'This email is invalid!',
 };
 

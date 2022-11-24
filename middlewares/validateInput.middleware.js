@@ -12,6 +12,7 @@ module.exports = (schema) => {
         (req, res, next) => {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
+                console.log(req.private);
                 return res
                     .status(variable.httpStatus.UNPROCESSABLE_ENTITY)
                     .json({
