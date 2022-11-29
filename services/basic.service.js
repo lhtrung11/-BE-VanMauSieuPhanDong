@@ -8,7 +8,7 @@ exports.create = async (Model, input, ModelIndex) => {
             const index = await ModelIndex.create({
                 entityId: result.data._id,
             });
-            console.log(index);
+            // console.log(index);
         }
         return result;
     } catch (error) {

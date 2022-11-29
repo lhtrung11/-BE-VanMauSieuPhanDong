@@ -19,8 +19,12 @@ const message = {
     READ_FAIL: 'Unable to get data',
 
     // ACTION detail
-    LOGIN_SUCCESS: 'Welcome',
-    LOGIN_FAILED: 'Login failed',
+    REGISTER_SUCCESS: 'Your account is created successfully',
+    REGISTER_FAILED: 'Somethings went wrong',
+    SIGNIN_SUCCESS: 'Welcome back',
+    SIGNIN_FAILED: 'Somethings went wrong',
+    LOGOUT_SUCCESS: 'See you again',
+    LOGOUT_FAILED: 'Somethings went wrong',
 
     // Description
     COMPLETE_RESPONSE: 'Response Successfully',

@@ -62,7 +62,7 @@ const isExisted = (field, Model, isDuplicated) => {
                             return Promise.reject(
                                 message[`${field.toUpperCase()}_NOT_FOUND`]
                             );
-                        else req.private = { ...result };
+                        else req.private = { ...result._doc };
                     }
                 }),
             bail: true,
@@ -90,13 +90,15 @@ const isMatched = (field, matchesType) => {
                         // result = (value === comparedValue)
                         break;
                     default:
-                    // result = value === req.body[field];
                 }
-                if (!result)
+                if (!result) {
                     return Promise.reject(
                         message[`${field.toUpperCase()}_NOT_MATCH`]
                     );
+                }
+                return result;
             },
+            bail: true,
         },
     };
     return customSanitizer;

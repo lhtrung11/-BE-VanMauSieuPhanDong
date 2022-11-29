@@ -1,17 +1,28 @@
 const jwt = require('jsonwebtoken');
 const { variable } = require('../constants');
+const errorFormatter = require('../helpers/errorFormatter.helper');
 
-const createToken = (data, options) => {
-    return jwt.sign(data, variable.env.key, options);
+const createToken = (payload, options) => {
+    return jwt.sign(payload, variable.env.key, options);
 };
 
 exports.login = (ModelHistory, input) => {
+    const result = { data: null, errors: [] };
+    console.log(input);
     try {
-        const result = { data: null, errors: [] };
         result.data = {
-            accessToken: createToken({ input }, { expiredIn: '2h' }),
-            refreshToken: createToken({ input }, { expiredIn: '7d' }),
+            accessToken: createToken(input, { expiresIn: '2h' }),
+            refreshToken: createToken(input, { expiresIn: '7d' }),
         };
+        return result;
+    } catch (error) {
+        return errorFormatter(result, error);
+    }
+};
+
+exports.logout = (ModelHistory, input) => {
+    const result = { data: null, errors: [] };
+    try {
         return result;
     } catch (error) {
         return errorFormatter(result, error);

@@ -23,32 +23,34 @@ exports.register = async (req, res, next) => {
     response(
         variable.httpStatus.CREATED,
         variable.httpStatus.CONFLICT,
-        message.CREATE_SUCCESS,
-        message.CREATE_FAIL,
+        message.REGISTER_SUCCESS,
+        message.REGISTER_FAILED,
         output,
         res
     );
 };
 
 exports.login = async (req, res, next) => {
+    req.input = { ...req.private, ...req.input };
     const output = await authService.login(AccountHistory, req.input);
     response(
         variable.httpStatus.OK,
         variable.httpStatus.UNAUTHORIZED,
-        message.LOGIN_SUCCESS,
-        message.LOGIN_FAILED,
+        message.SIGNIN_SUCCESS,
+        message.SIGNIN_FAILED,
         output,
         res
     );
 };
 
 exports.logout = async (req, res, next) => {
-    const token = jwt.sign({ message: '' }, process.env.APP_SECRET, {
-        expiresIn: '1ms',
-    });
-    res.status(200).json({
-        status: 'success',
-        message: 'Logout successfully',
-        data: { token },
-    });
+    const output = await authService.logout(AccountHistory, req.input);
+    response(
+        variable.httpStatus.OK,
+        variable.httpStatus.NOT_FOUND,
+        message.LOGOUT_SUCCESS,
+        message.LOGOUT_FAILED,
+        output,
+        res
+    );
 };
