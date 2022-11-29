@@ -7,6 +7,6 @@ const Router = express.Router();
 Router.route('/register').post(validateInput(schema.register), register);
 Router.route('/login').post(validateInput(schema.login), login);
 Router.route('/logout').post(logout);
-// Router.route('/refresh').post(refresh);
+Router.route('/refresh').post(validateInput(schema.refresh), refresh);
 
 module.exports = Router;
