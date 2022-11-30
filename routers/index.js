@@ -8,7 +8,7 @@ const globalRoute = require('./global.route');
 const adminRoute = require('./admin.route');
 
 Route = (app) => {
-    app.use(verifyCredential);
+    // app.use(verifyCredential);
     app.use('/admin', adminRoute);
     app.use('/api/auth', authRoute);
     app.use('/user', userRoute);

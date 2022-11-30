@@ -28,3 +28,16 @@ exports.logout = (ModelHistory, input) => {
         return errorFormatter(result, error);
     }
 };
+
+exports.refresh = (ModelHistory, input, refreshToken) => {
+    const result = { data: null, errors: [] };
+    try {
+        result.data = {
+            accessToken: createToken(input, { expiresIn: '2h' }),
+            refreshToken: refreshToken,
+        };
+        return result;
+    } catch (error) {
+        return errorFormatter(result, error);
+    }
+};

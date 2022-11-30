@@ -1,5 +1,3 @@
-// const User = require('../models/user.model');
-const jwt = require('jsonwebtoken');
 const Account = require('../models/account.model');
 const AccountIndex = require('../models/accountIndex.model');
 const AccountHistory = require('../models/accountHistory.model');
@@ -31,7 +29,7 @@ exports.register = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-    req.input = { ...req.private, ...req.input };
+    req.input = { ...req.private };
     const output = await authService.login(AccountHistory, req.input);
     response(
         variable.httpStatus.OK,
@@ -50,6 +48,22 @@ exports.logout = async (req, res, next) => {
         variable.httpStatus.NOT_FOUND,
         message.LOGOUT_SUCCESS,
         message.LOGOUT_FAILED,
+        output,
+        res
+    );
+};
+
+exports.refresh = async (req, res, next) => {
+    const output = await authService.refresh(
+        AccountHistory,
+        req.private,
+        req.refresh
+    );
+    response(
+        variable.httpStatus.OK,
+        variable.httpStatus.BAD_REQUEST,
+        message.REFRESH_SUCCESS,
+        message.REFRESH_FAILED,
         output,
         res
     );

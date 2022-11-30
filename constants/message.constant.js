@@ -25,12 +25,19 @@ const message = {
     SIGNIN_FAILED: 'Somethings went wrong',
     LOGOUT_SUCCESS: 'See you again',
     LOGOUT_FAILED: 'Somethings went wrong',
+    REFRESH_SUCCESS: 'New tokens have been sent',
+    REFRESH_FAILED: 'Unable to refresh',
+
+    // Others
+
+    MISSING_TOKEN: 'Missing token',
 
     // Description
-    COMPLETE_RESPONSE: 'Response Successfully',
-    VALIDATE_ERROR: 'Validation Failed',
+    COMPLETE_RESPONSE: 'Good response',
+    VALIDATE_ERROR: 'Errors happened in validation state',
     REQUIRE_PERMISSION: 'You do not have permission to perform this action',
     NOT_FOUND: 'Not found',
+    AUTHENTICATE_ERROR: 'Lack of credential information',
 
     // Validate
     REQUIRED: 'required',
