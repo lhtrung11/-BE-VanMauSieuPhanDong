@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const response = require('../helpers/responseHandler.helper');
 const { message, variable } = require('../constants');
 const { username } = require('../helpers/random.helper');
+const { TokenExpiredError } = require('jsonwebtoken');
 
 exports.verifyCredential = (req, res, next) => {
     // Access Authorization from req header
@@ -10,7 +11,10 @@ exports.verifyCredential = (req, res, next) => {
     req.token = Authorization.replace(/^Bearer\s/, '');
     jwt.verify(req.token, variable.env.key, (err, payload) => {
         if (err)
-            handleTokenError(err instanceof TokenExpiredError ? 1 : 2, res);
+            return handleTokenError(
+                err instanceof TokenExpiredError ? 1 : 2,
+                res
+            );
         req.private = payload;
         next();
     });

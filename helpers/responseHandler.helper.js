@@ -1,5 +1,5 @@
 module.exports = (okStatus, failStatus, okMsg, failMsg, output, res) => {
-    if (!!output.errors)
+    if (output.errors?.length > 0)
         res.status(failStatus).json({
             description: failMsg,
             errors: {
