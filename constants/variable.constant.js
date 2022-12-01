@@ -79,6 +79,11 @@ const status = {
         ACTIVE: 1,
         BANNED: 2,
     },
+    verse: {
+        INACTIVE: 0,
+        ACTIVE: 1,
+        BANNED: 2,
+    },
     deleted: {
         FALSE: 0,
         TRUE: 1,

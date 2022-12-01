@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const { variable, message } = require('../constants');
 
-const accountHistorySchema = new mongoose.Schema({
+const verseHistorySchema = new mongoose.Schema({
     entityId: {
         type: mongoose.Types.ObjectId,
-        ref: 'account',
+        ref: 'verse',
         required: true,
     },
     action: {
@@ -12,9 +12,10 @@ const accountHistorySchema = new mongoose.Schema({
     },
     date: {
         type: Date,
+        default: Date.now(),
     },
 });
 
-const accountHistory = mongoose.model('accountHistory', accountHistorySchema);
+const VerseHistory = mongoose.model('VerseHistory', verseHistorySchema);
 
-module.exports = accountHistory;
+module.exports = VerseHistory;

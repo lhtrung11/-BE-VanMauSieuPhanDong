@@ -4,33 +4,18 @@ const bcrypt = require('bcryptjs');
 const random = require('../helpers/random.helper');
 
 const verseSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        trim: true,
+    setId: {
+        type: mongoose.Types.ObjectId,
         required: true,
     },
-    password: {
-        type: String,
-        trim: true,
+    authorId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'account',
         required: true,
-        default: variable.defaultValue.defaultPassword,
     },
-    email: {
-        type: String,
-        trim: true,
-    },
-    title: { type: [String], default: ['Anonymous'] },
-    avatar: {
+    content: {
         type: String,
         required: true,
-        default: variable.defaultValue.defaultFile.defaultAvatarValue,
-    },
-    role: { type: String, required: true, default: variable.role.guest },
-    nickname: {
-        type: String,
-        required: true,
-        default: random.nickname,
     },
 });
 
