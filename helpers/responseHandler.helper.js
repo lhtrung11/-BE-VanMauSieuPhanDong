@@ -1,10 +1,10 @@
 module.exports = (okStatus, failStatus, okMsg, failMsg, output, res) => {
-    if (!output.errors)
+    if (!!output.errors)
         res.status(failStatus).json({
             description: failMsg,
             errors: {
                 list: output.errors,
-                total: '',
+                total: output.errors.length,
             },
         });
     else {

@@ -1,27 +1,59 @@
 const jwt = require('jsonwebtoken');
 const response = require('../helpers/responseHandler.helper');
 const { message, variable } = require('../constants');
+const { username } = require('../helpers/random.helper');
 
 exports.verifyCredential = (req, res, next) => {
     // Access Authorization from req header
-    const Authorization = req.header('authorization');
-    if (!Authorization) {
-        const errors = [
-            {
+    Authorization = req.header('authorization');
+    if (!Authorization) handleTokenError(0, res);
+    req.token = Authorization.replace(/^Bearer\s/, '');
+    jwt.verify(req.token, variable.env.key, (err, payload) => {
+        if (err)
+            handleTokenError(err instanceof TokenExpiredError ? 1 : 2, res);
+        req.private = payload;
+        next();
+    });
+};
+
+const handleTokenError = (type, res) => {
+    const output = { errors: [] };
+    switch (type) {
+        case 0:
+            output.errors.push({
                 value: null,
-                msg: message.MISSING_TOKEN,
+                msg: message.TOKEN_MISSING,
                 location: 'Verify Credential',
-            },
-        ];
-        res.status(variable.httpStatus.UNAUTHORIZED).json({
-            description: message.AUTHENTICATE_ERROR,
-            errors: {
-                list: errors.array(),
-                total: errors.array().length,
-            },
-        });
+            });
+            break;
+        case 1:
+            output.errors.push({
+                value: null,
+                msg: message.TOKEN_EXPIRED,
+                location: 'Verify Credential',
+            });
+            break;
+        case 2:
+            output.errors.push({
+                value: null,
+                msg: message.TOKEN_INVALID,
+                location: 'Verify Credential',
+            });
+            break;
+        default:
+            output.errors.push({
+                value: null,
+                msg: message.FAIL,
+                location: 'Verify Credential',
+            });
+            break;
     }
-    const accessToken = Authorization.replace('Bearer ', '');
-    req.private = jwt.verify(accessToken, process.env.APP_SECRET);
-    next();
+    response(
+        variable.httpStatus.BAD_REQUEST,
+        variable.httpStatus.UNAUTHORIZED,
+        message.FAIL,
+        message.AUTHENTICATE_ERROR,
+        output,
+        res
+    );
 };

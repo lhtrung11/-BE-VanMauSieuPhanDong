@@ -6,7 +6,7 @@ const message = {
 
     // State
     SUCCESS: 'OK',
-    FAIL: 'ERR',
+    FAIL: 'ERROR',
 
     // CRUD detail
     CREATE_SUCCESS: 'Create data successfully',
@@ -30,14 +30,16 @@ const message = {
 
     // Others
 
-    MISSING_TOKEN: 'Missing token',
+    TOKEN_MISSING: 'Missing token',
+    TOKEN_INVALID: 'This is not a valid token',
+    TOKEN_EXPIRED: 'Token is out of date',
 
     // Description
     COMPLETE_RESPONSE: 'Good response',
     VALIDATE_ERROR: 'Errors happened in validation state',
     REQUIRE_PERMISSION: 'You do not have permission to perform this action',
     NOT_FOUND: 'Not found',
-    AUTHENTICATE_ERROR: 'Lack of credential information',
+    AUTHENTICATE_ERROR: 'Met problems in verifying credential information',
 
     // Validate
     REQUIRED: 'required',

@@ -57,7 +57,7 @@ exports.refresh = async (req, res, next) => {
     const output = await authService.refresh(
         AccountHistory,
         req.private,
-        req.refresh
+        req.token
     );
     response(
         variable.httpStatus.OK,

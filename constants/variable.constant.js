@@ -91,6 +91,11 @@ const path = {
     refresh: '/api/auth/refresh',
 };
 
+const tokenType = {
+    access: '0',
+    refresh: '1',
+};
+
 const checkIsExistedType = {
     true: true,
     false: false,
@@ -199,4 +204,5 @@ module.exports = {
     field,
     checkIsExistedType,
     matchesType,
+    tokenType,
 };

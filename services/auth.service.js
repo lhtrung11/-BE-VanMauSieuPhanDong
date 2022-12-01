@@ -8,11 +8,16 @@ const createToken = (payload, options) => {
 
 exports.login = (ModelHistory, input) => {
     const result = { data: null, errors: [] };
-    console.log(input);
     try {
         result.data = {
-            accessToken: createToken(input, { expiresIn: '2h' }),
-            refreshToken: createToken(input, { expiresIn: '7d' }),
+            accessToken: createToken(
+                { ...input, token: variable.tokenType.access },
+                { expiresIn: '2h' }
+            ),
+            refreshToken: createToken(
+                { ...input, token: variable.tokenType.refresh },
+                { expiresIn: '7d' }
+            ),
         };
         return result;
     } catch (error) {
@@ -32,8 +37,13 @@ exports.logout = (ModelHistory, input) => {
 exports.refresh = (ModelHistory, input, refreshToken) => {
     const result = { data: null, errors: [] };
     try {
+        delete input.exp;
+        delete input.iat;
         result.data = {
-            accessToken: createToken(input, { expiresIn: '2h' }),
+            accessToken: createToken(
+                { ...input, token: variable.tokenType.access },
+                { expiresIn: '2h' }
+            ),
             refreshToken: refreshToken,
         };
         return result;
