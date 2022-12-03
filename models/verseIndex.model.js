@@ -8,6 +8,14 @@ const verseIndexSchema = new mongoose.Schema(
             ref: 'verse',
             required: true,
         },
+        detail: {
+            size: Number,
+            fileType: {
+                type: String,
+                enum: variable.defaultValue.defaultFileType,
+            },
+            original: String,
+        },
         status: {
             type: Number,
             required: true,
@@ -17,6 +25,31 @@ const verseIndexSchema = new mongoose.Schema(
             type: Number,
             required: true,
             default: variable.status.deleted.FALSE,
+        },
+        views: {
+            type: Number,
+            required: true,
+            default: variable.initNumber.views,
+        },
+        citationCount: {
+            comment: {
+                type: Number,
+                required: true,
+                default: variable.initNumber.comment,
+                min: 0,
+            },
+            reference: {
+                type: Number,
+                required: true,
+                default: variable.initNumber.reference,
+                min: 0,
+            },
+        },
+        cost: {
+            type: Number,
+            required: true,
+            default: variable.initNumber.cost,
+            min: 0,
         },
     },
     { timestamps: true }

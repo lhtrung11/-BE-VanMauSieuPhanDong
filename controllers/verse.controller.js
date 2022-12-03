@@ -1,4 +1,10 @@
-// const Doc = require("../models/document.model");
+const Verse = require('../models/verse.model');
+const VerseIndex = require('../models/verseIndex.model');
+const VerseHistory = require('../models/verseHistory.model');
+const basicService = require('../services/basic.service');
+const verseService = require('../services/verse.service');
+const { message, variable } = require('../constants');
+
 // const User = require("../models/user.model");
 
 // exports.getDocument = async (req, res, next) => {
@@ -23,17 +29,25 @@
 //     } catch (error) {}
 // };
 
-// exports.createDocument = async (req, res, next) => {
-//     try {
-//         const { userId } = req.user;
-//         const doc = await Doc.create({ ...req.body, userId: userId });
-//         await User.findByIdAndUpdate(userId, { $push: { docs: doc._id } });
-//         res.status(200).json({
-//             status: "success",
-//             data: { doc },
-//         });
-//     } catch (error) {}
-// };
+exports.createVerse = async (req, res, next) => {
+    const output = await basicService.create(
+        Verse,
+        {
+            description: req.input.description,
+            authorId: req.private._id,
+        },
+        VerseIndex
+    );
+    const output2 = await basicService.createList(Verse, {}, VerseIndex);
+    response(
+        variable.httpStatus.CREATED,
+        variable.httpStatus.CONFLICT,
+        message.CREATE_SUCCESS,
+        message.CREATE_FAIL,
+        output,
+        res
+    );
+};
 
 // exports.editDocument = async (req, res, next) => {
 //     try {

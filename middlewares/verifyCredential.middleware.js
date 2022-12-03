@@ -4,7 +4,7 @@ const { message, variable } = require('../constants');
 const { username } = require('../helpers/random.helper');
 const { TokenExpiredError } = require('jsonwebtoken');
 
-exports.verifyCredential = (req, res, next) => {
+module.exports = (req, res, next) => {
     // Access Authorization from req header
     Authorization = req.header('authorization');
     if (!Authorization) handleTokenError(0, res);

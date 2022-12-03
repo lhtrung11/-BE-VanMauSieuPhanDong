@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 const { variable, message } = require('../constants');
-const bcrypt = require('bcryptjs');
-const random = require('../helpers/random.helper');
 
 const verseSchema = new mongoose.Schema({
     setId: {
         type: mongoose.Types.ObjectId,
-        required: true,
+        ref: 'verse',
     },
     authorId: {
         type: mongoose.Types.ObjectId,
@@ -15,7 +13,14 @@ const verseSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        required: true,
+    },
+    description: {
+        type: String,
+    },
+    category: { type: [String] },
+    referentId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'verse',
     },
 });
 

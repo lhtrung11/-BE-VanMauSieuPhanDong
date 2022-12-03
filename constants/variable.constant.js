@@ -6,6 +6,14 @@ const env = {
     key: process.env.TOKEN_KEY,
 };
 
+const initNumber = {
+    views: 0,
+    comment: 0,
+    reference: 0,
+    cost: 100,
+    point: 5000,
+};
+
 const role = {
     guest: '001',
     user: '002',
@@ -71,6 +79,7 @@ const defaultValue = {
         defaultAvatarUrl: '../assets/images',
     },
     defaultPassword: 'guest123',
+    defaultFileType: ['image', 'video', 'gif', 'longText', 'audio'],
 };
 
 const status = {
@@ -210,4 +219,5 @@ module.exports = {
     checkIsExistedType,
     matchesType,
     tokenType,
+    initNumber,
 };

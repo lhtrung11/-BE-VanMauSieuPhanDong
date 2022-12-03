@@ -1,12 +1,13 @@
 const express = require('express');
-// const docController = require('../controllers/document.controller');
-// const { verifyToken } = require('../middlewares/verifyToken.middleware');
+const verseController = require('../controllers/verse.controller');
+const validateInput = require('../middlewares/validateInput.middleware');
+const schema = require('../models/schemas/schema');
 
 const Router = express.Router();
 
-// Router.route("/")
-//     .get(docController.getAllDocument)
-//     .post(verifyToken, docController.createDocument);
+Router.route('/')
+    // .get(verseController.getAllDocument)
+    .post(validateInput(schema.createVerse), verseController.createVerse);
 // Router.route("/:docId")
 //     .get(docController.getDocument)
 //     .put(verifyToken, docController.editDocument)

@@ -1,7 +1,6 @@
 const sanitizer = require('./sanitizer');
 const Account = require('../account.model');
 const { variable } = require('../../constants');
-const { field } = require('../../constants/variable.constant');
 
 exports.register = {
     username: Object.assign(
@@ -31,4 +30,9 @@ exports.login = {
 exports.refresh = {
     // username: sanitizer.username,
     // password: sanitizer.password,
+};
+
+exports.createVerse = {
+    content: sanitizer.,
+    description: sanitizer.description
 };

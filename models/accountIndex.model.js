@@ -18,6 +18,11 @@ const accountIndexSchema = new mongoose.Schema(
             required: true,
             default: variable.status.deleted.FALSE,
         },
+        point: {
+            type: Number,
+            required: true,
+            default: variable.initNumber.point,
+        },
     },
     { timestamps: true }
 );
