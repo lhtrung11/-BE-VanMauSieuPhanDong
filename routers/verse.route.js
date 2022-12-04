@@ -7,7 +7,7 @@ const Router = express.Router();
 
 Router.route('/')
     // .get(verseController.getAllDocument)
-    .post(validateInput(schema.createVerse), verseController.createVerse);
+    .post(verseController.createVerse);
 // Router.route("/:docId")
 //     .get(docController.getDocument)
 //     .put(verifyToken, docController.editDocument)

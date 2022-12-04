@@ -4,6 +4,15 @@
 const env = {
     port: process.env.APP_PORT,
     key: process.env.TOKEN_KEY,
+    imgStorageClientId: process.env.IMG_STORAGE_CLIENT_ID,
+    imgStorageClientSecret: process.env.IMG_STORAGE_CLIENT_SECRET,
+    vidStorageClientId: process.env.VID_STORAGE_CLIENT_ID,
+    vidStorageClientSecret: process.env.VID_STORAGE_CLIENT_SECRET,
+    gifStorageClientId: process.env.GIF_STORAGE_CLIENT_ID,
+    gifStorageClientSecret: process.env.GIF_STORAGE_CLIENT_SECRET,
+    audStorageClientId: process.env.AUD_STORAGE_CLIENT_ID,
+    audStorageClientSecret: process.env.AUD_STORAGE_CLIENT_SECRET,
+    redirectUri: process.env.REDIRECT_URI,
 };
 
 const initNumber = {

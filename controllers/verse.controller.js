@@ -38,7 +38,8 @@ exports.createVerse = async (req, res, next) => {
         },
         VerseIndex
     );
-    const output2 = await basicService.createList(Verse, {}, VerseIndex);
+    // const output2 = await basicService.createList(Verse, {}, VerseIndex);
+    // const output = { data: req.input, errors: [] };
     response(
         variable.httpStatus.CREATED,
         variable.httpStatus.CONFLICT,
