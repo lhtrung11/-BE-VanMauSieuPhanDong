@@ -9,10 +9,10 @@ const adminRoute = require('./admin.route');
 
 Route = (app) => {
     // app.use(verifyCredential);
-    app.use('/admin', adminRoute);
+    // app.use('/admin', adminRoute);
     app.use('/api/auth', authRoute);
-    app.use('/user', userRoute);
-    app.use('/verse', verseRoute);
+    // app.use('/user', userRoute);
+    app.use('/api/verse', verseRoute);
     app.use('/', globalRoute);
 };
 

@@ -49,6 +49,8 @@ const field = {
     username: 'username',
     password: 'password',
     email: 'email',
+    description: 'description',
+    content: 'content',
 };
 
 const defaultValue = {
@@ -114,11 +116,6 @@ const path = {
     refresh: '/api/auth/refresh',
 };
 
-const tokenType = {
-    access: '0',
-    refresh: '1',
-};
-
 const checkIsExistedType = {
     true: true,
     false: false,
@@ -129,10 +126,21 @@ const matchesType = {
     common: 'common',
 };
 
+const tokenType = {
+    access: '0',
+    refresh: '1',
+};
+
+const validateType = {
+    default: 0,
+    createVerse: 1,
+};
+
 const regex = {
     username: /^[a-zA-Z0-9_-]{3,16}$/,
     password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    // description:
 };
 
 const httpStatus = {
@@ -215,7 +223,13 @@ const httpStatus = {
     NETWORK_AUTHENTICATION_REQUIRED: 511,
 };
 
+const limit = {
+    totalFilesUpload: 4,
+    totalSizeUpload: 1,
+};
+
 module.exports = {
+    limit,
     env,
     role,
     status,
@@ -229,4 +243,5 @@ module.exports = {
     matchesType,
     tokenType,
     initNumber,
+    validateType,
 };

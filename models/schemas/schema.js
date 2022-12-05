@@ -32,7 +32,6 @@ exports.refresh = {
     // password: sanitizer.password,
 };
 
-// exports.createVerse = {
-//     content: sanitizer.,
-//     description: sanitizer.description
-// };
+exports.createVerse = {
+    description: { ...sanitizer.requiredOption, ...sanitizer.description },
+};

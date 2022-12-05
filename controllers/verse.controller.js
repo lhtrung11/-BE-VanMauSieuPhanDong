@@ -30,24 +30,26 @@ const { message, variable } = require('../constants');
 // };
 
 exports.createVerse = async (req, res, next) => {
-    const output = await basicService.create(
-        Verse,
-        {
-            description: req.input.description,
-            authorId: req.private._id,
-        },
-        VerseIndex
-    );
+    // console.log(req.files);
+    res.status(200).json(req.body);
+    // const output = await basicService.create(
+    //     Verse,
+    //     {
+    //         description: req.input.description,
+    //         authorId: req.private._id,
+    //     },
+    //     VerseIndex
+    // );
     // const output2 = await basicService.createList(Verse, {}, VerseIndex);
     // const output = { data: req.input, errors: [] };
-    response(
-        variable.httpStatus.CREATED,
-        variable.httpStatus.CONFLICT,
-        message.CREATE_SUCCESS,
-        message.CREATE_FAIL,
-        output,
-        res
-    );
+    // response(
+    //     variable.httpStatus.CREATED,
+    //     variable.httpStatus.CONFLICT,
+    //     message.CREATE_SUCCESS,
+    //     message.CREATE_FAIL,
+    //     output,
+    //     res
+    // );
 };
 
 // exports.editDocument = async (req, res, next) => {

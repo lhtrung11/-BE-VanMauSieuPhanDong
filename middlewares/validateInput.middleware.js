@@ -3,10 +3,23 @@ const {
     validationResult,
     matchedData,
 } = require('express-validator');
+const multer = require('multer');
 const { message, variable } = require('../constants');
 
-module.exports = (schema) => {
-    return [
+const handleFilesUpload = multer().array(
+    'content',
+    variable.limit.totalFilesUpload
+);
+
+const collectData = (req, res, next) => {
+    if (req.files) {
+        req.body.content = [...req.files];
+    }
+    next();
+};
+
+module.exports = (schema, option = 0) => {
+    let validator = [
         checkSchema(schema),
         (req, res, next) => {
             const errors = validationResult(req);
@@ -29,4 +42,12 @@ module.exports = (schema) => {
             next();
         },
     ];
+    switch (option) {
+        case variable.validateType.default:
+            break;
+        case variable.validateType.createVerse:
+            validator = [handleFilesUpload, collectData, ...validator];
+            break;
+    }
+    return validator;
 };

@@ -33,6 +33,8 @@ const message = {
     TOKEN_MISSING: 'Missing token',
     TOKEN_INVALID: 'This is not a valid token',
     TOKEN_EXPIRED: 'Token is out of date',
+    UPLOAD_LIMITED: 'This upload contains more than the allowed amount',
+    UPLOAD_FAILED: 'Upload files are not eligible',
 
     // Description
     COMPLETE_RESPONSE: 'Good response',
@@ -51,6 +53,7 @@ const message = {
         'The password must contains 8 characters minimum, at least one letter and one number!',
     PASSWORD_NOT_MATCH: 'Password does not match',
     EMAIL_INVALID: 'This email is invalid!',
+    DESCRIPTION_INVALID: 'Description is limited by 200 characters',
 };
 
 module.exports = message;

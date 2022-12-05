@@ -38,6 +38,13 @@ const email = {
     },
 };
 
+const description = {
+    matches: {
+        options: variable.regex.description,
+        errorMessage: message.DESCRIPTION_INVALID,
+    },
+};
+
 // OPTION VALIDATE
 
 // this field is not required, but it must be corrected while passing in
@@ -107,6 +114,7 @@ module.exports = {
     username,
     password,
     email,
+    description,
     requiredOption,
     isExisted,
     isMatched,
