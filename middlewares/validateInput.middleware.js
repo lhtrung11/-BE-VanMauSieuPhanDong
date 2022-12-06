@@ -13,7 +13,7 @@ const handleFilesUpload = multer().array(
 
 const collectData = (req, res, next) => {
     if (req.files) {
-        req.body.content = [...req.files];
+        req.body.contents = [...req.files];
     }
     next();
 };

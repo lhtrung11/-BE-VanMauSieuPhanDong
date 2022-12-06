@@ -29,12 +29,15 @@ const message = {
     REFRESH_FAILED: 'Unable to refresh',
 
     // Others
-
     TOKEN_MISSING: 'Missing token',
     TOKEN_INVALID: 'This is not a valid token',
     TOKEN_EXPIRED: 'Token is out of date',
     UPLOAD_LIMITED: 'This upload contains more than the allowed amount',
     UPLOAD_FAILED: 'Upload files are not eligible',
+    MIMETYPE_INVALID: 'We not support this type of file',
+    BUFFER_INVALID: '',
+    FILES_LENGTH_INVALID: '',
+    FILES_SIZE_INVALID: '',
 
     // Description
     COMPLETE_RESPONSE: 'Good response',

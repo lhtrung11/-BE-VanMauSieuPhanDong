@@ -42,7 +42,25 @@ const description = {
     matches: {
         options: variable.regex.description,
         errorMessage: message.DESCRIPTION_INVALID,
+        bail: true,
     },
+};
+
+const mimetype = {
+    matches: {
+        options: variable.regex.mimetype,
+        errorMessage: message.MIMETYPE_INVALID,
+        bail: true,
+    },
+};
+
+const buffer = {
+    matches: {},
+};
+
+const contents = {
+    '*.mimetype': mimetype,
+    '*.buffer': buffer,
 };
 
 // OPTION VALIDATE
@@ -110,12 +128,62 @@ const isMatched = (field, matchesType) => {
     };
     return customSanitizer;
 };
+
+const limitTotalFiles = (checkType) => {
+    const customSanitizer = {
+        custom: {
+            options: (value, { req }) => {
+                let totalFiles;
+                switch (checkType) {
+                    case 0:
+                        totalFiles = value.length;
+                        break;
+                    default:
+                        totalFiles = value.length;
+                }
+                if (totalFiles > variable.limit.totalFilesUpload) {
+                    return Promise.reject(message.FILES_LENGTH_INVALID);
+                }
+            },
+        },
+    };
+    return customSanitizer;
+};
+
+const limitTotalSize = (checkType) => {
+    const customSanitizer = {
+        custom: {
+            options: (value, { req }) => {
+                let totalSize;
+                switch (checkType) {
+                    case 0:
+                        totalSize = value.reduce(
+                            (accumulator, obj) => accumulator + obj.size,
+                            0
+                        );
+                        break;
+                    default:
+                        totalSize = value.length;
+                }
+                if (totalSize > variable.limit.totalSizeUpload) {
+                    return Promise.reject(message.FILES_SIZE_INVALID);
+                }
+            },
+        },
+    };
+    return customSanitizer;
+};
+
 module.exports = {
     username,
     password,
     email,
     description,
+    contents,
+    mimetype,
     requiredOption,
     isExisted,
     isMatched,
+    limitTotalFiles,
+    limitTotalSize,
 };

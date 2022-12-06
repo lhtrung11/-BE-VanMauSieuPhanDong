@@ -34,4 +34,9 @@ exports.refresh = {
 
 exports.createVerse = {
     description: { ...sanitizer.requiredOption, ...sanitizer.description },
+    contents: Object.assign(
+        { ...sanitizer.contents },
+        sanitizer.limitTotalFiles(0),
+        sanitizer.limitTotalSize(0)
+    ),
 };

@@ -3,6 +3,7 @@ const { variable } = require('../constants');
 const verseController = require('../controllers/verse.controller');
 const validateInput = require('../middlewares/validateInput.middleware');
 const schema = require('../models/schemas/schema');
+const multer = require('multer');
 
 // const storage = multer.diskStorage({
 //     destination: (req, file, cb) => {
@@ -18,6 +19,7 @@ const Router = express.Router();
 
 Router.route('/').post(
     validateInput(schema.createVerse, variable.validateType.createVerse),
+    // multer().array('contents'),
     verseController.createVerse
 );
 // Router.route("/:docId")

@@ -140,7 +140,12 @@ const regex = {
     username: /^[a-zA-Z0-9_-]{3,16}$/,
     password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
     email: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    // description:
+    description: /^([\s\S]){5,200}$/,
+    mimetype:
+        /((^image)(\/)(?:jpg|jpeg|gif|png|webp)$)|((^video)(\/)(?:mp4|mpeg|mov|webm)$)|((^audio)(\/)(?:mp3|mpeg|wav|webm)$)/,
+    image: /(^image)(\/)(?:jpg|jpeg|gif|png|webp)$/,
+    video: /(^video)(\/)(?:mp4|mpeg|mov|webm)$/,
+    audio: /(^audio)(\/)(?:mp3|mpeg|wav|webm)$/,
 };
 
 const httpStatus = {
