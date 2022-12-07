@@ -6,10 +6,7 @@ const {
 const multer = require('multer');
 const { message, variable } = require('../constants');
 
-const handleFilesUpload = multer().array(
-    'content',
-    variable.limit.totalFilesUpload
-);
+const handleFilesUpload = multer().array('contents');
 
 const collectData = (req, res, next) => {
     if (req.files) {

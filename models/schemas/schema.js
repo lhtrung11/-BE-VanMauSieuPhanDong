@@ -35,8 +35,10 @@ exports.refresh = {
 exports.createVerse = {
     description: { ...sanitizer.requiredOption, ...sanitizer.description },
     contents: Object.assign(
-        { ...sanitizer.contents },
-        sanitizer.limitTotalFiles(0),
-        sanitizer.limitTotalSize(0)
+        {},
+        sanitizer.limitTotalSize(0),
+        sanitizer.limitTotalFiles(0)
     ),
+    'contents.*.mimetype': sanitizer.mimetype,
+    'contents.*.buffer': sanitizer.buffer,
 };

@@ -13,31 +13,13 @@ const oauth2ImgClient = new google.auth.OAuth2(
 //     variable.env.redirectUri
 // );
 
-// const oauth2GifClient = new google.auth.OAuth2(
-//     variable.env.gifStorageClientId,
-//     variable.env.gifStorageClientSecret,
-//     variable.env.redirectUri
-// );
-
-// const oauth2AudClient = new google.auth.OAuth2(
-//     variable.env.audStorageClientId,
-//     variable.env.audStorageClientSecret,
-//     variable.env.redirectUri
-// );
-
 const imgClientRefreshToken =
-    '1//0432BqDeQhgjTCgYIARAAGAQSNwF-L9IrsFLL6AI32hBJCPRuvNuXtoclZeTzbHtYmVjAlUVEMmW1dLAZxY1DWFG4kTV3Ud_Lu5Y';
+    '1//04c5yN8-yDjbACgYIARAAGAQSNwF-L9IrgdiGVK5gjqhWTXX-ZRH9fb8HPolA3MupiamLbVwUNU9_Wz-K_HzJIJr_q1FyAqTRARk';
 // const vidClientRefreshToken =
-//     '1//0432BqDeQhgjTCgYIARAAGAQSNwF-L9IrsFLL6AI32hBJCPRuvNuXtoclZeTzbHtYmVjAlUVEMmW1dLAZxY1DWFG4kTV3Ud_Lu5Y';
-// const gifClientRefreshToken =
-//     '1//0432BqDeQhgjTCgYIARAAGAQSNwF-L9IrsFLL6AI32hBJCPRuvNuXtoclZeTzbHtYmVjAlUVEMmW1dLAZxY1DWFG4kTV3Ud_Lu5Y';
-// const audClientRefreshToken =
 //     '1//0432BqDeQhgjTCgYIARAAGAQSNwF-L9IrsFLL6AI32hBJCPRuvNuXtoclZeTzbHtYmVjAlUVEMmW1dLAZxY1DWFG4kTV3Ud_Lu5Y';
 
 oauth2ImgClient.setCredentials(imgClientRefreshToken);
-// oauth2VidClient.setCredentials(vidClientRefreshToken);
-// oauth2GifClient.setCredentials(gifClientRefreshToken);
-// oauth2AudClient.setCredentials(audClientRefreshToken);
+// oauth2VidClient.setCredentials(vidClientRefreshToken);/
 
 exports.imgStorage = google.drive({
     version: 'v3',
@@ -47,14 +29,4 @@ exports.imgStorage = google.drive({
 // exports.vidStorage = google.drive({
 //     version: 'v3',
 //     auth: oauth2VidClient,
-// });
-
-// exports.gifStorage = google.drive({
-//     version: 'v3',
-//     auth: oauth2GifClient,
-// });
-
-// exports.audStorage = google.drive({
-//     version: 'v3',
-//     auth: oauth2AudClient,
 // });

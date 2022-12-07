@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Verse = require('../models/verse.model');
 const VerseIndex = require('../models/verseIndex.model');
 const VerseHistory = require('../models/verseHistory.model');
@@ -30,27 +31,39 @@ const { message, variable } = require('../constants');
 // };
 
 exports.createVerse = async (req, res, next) => {
-    // console.log(req.files);
-    // res.status(200).json({ ...req.body, ...req.file });
-    res.status(200).json({ body: req.body, file: req.files });
-    // const output = await basicService.create(
-    //     Verse,
-    //     {
-    //         description: req.input.description,
-    //         authorId: req.private._id,
-    //     },
-    //     VerseIndex
-    // );
-    // const output2 = await basicService.createList(Verse, {}, VerseIndex);
+    const output = await basicService.create(
+        Verse,
+        {
+            description: req.input.description,
+            authorId: req.private._id,
+        },
+        VerseIndex
+    );
+    if (req.input?.contents.length > 0) {
+        req.input.contents.forEach(async (content) => {
+            const verseId = new mongoose.Types.ObjectId();
+            const saved = await basicService.upload({ ...content, verseId });
+            await basicService.create(
+                Verse,
+                {
+                    _id: verseId,
+                    setId: output.data?._id,
+                    authorId: output.data?.authorId,
+                    content: saved.url,
+                },
+                VerseIndex
+            );
+        });
+    }
     // const output = { data: req.input, errors: [] };
-    // response(
-    //     variable.httpStatus.CREATED,
-    //     variable.httpStatus.CONFLICT,
-    //     message.CREATE_SUCCESS,
-    //     message.CREATE_FAIL,
-    //     output,
-    //     res
-    // );
+    response(
+        variable.httpStatus.CREATED,
+        variable.httpStatus.CONFLICT,
+        message.CREATE_SUCCESS,
+        message.CREATE_FAIL,
+        output,
+        res
+    );
 };
 
 // exports.editDocument = async (req, res, next) => {

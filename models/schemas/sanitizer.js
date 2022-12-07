@@ -50,17 +50,16 @@ const mimetype = {
     matches: {
         options: variable.regex.mimetype,
         errorMessage: message.MIMETYPE_INVALID,
-        bail: true,
     },
+    bail: true,
 };
 
 const buffer = {
-    matches: {},
-};
-
-const contents = {
-    '*.mimetype': mimetype,
-    '*.buffer': buffer,
+    custom: {
+        options: (value, { req }) => {
+            return !value ? Promise.reject(message.BUFFER_INVALID) : !!value;
+        },
+    },
 };
 
 // OPTION VALIDATE
@@ -95,7 +94,6 @@ const isExisted = (field, Model, isDuplicated) => {
     };
     return customSanitizer;
 };
-
 // compare between 2 values with type of condition
 const isMatched = (field, matchesType) => {
     const customSanitizer = {
@@ -138,14 +136,16 @@ const limitTotalFiles = (checkType) => {
                     case 0:
                         totalFiles = value.length;
                         break;
-                    default:
-                        totalFiles = value.length;
                 }
                 if (totalFiles > variable.limit.totalFilesUpload) {
+                    value.forEach((v) => {
+                        delete v.buffer;
+                    });
                     return Promise.reject(message.FILES_LENGTH_INVALID);
                 }
             },
         },
+        bail: true,
     };
     return customSanitizer;
 };
@@ -162,14 +162,17 @@ const limitTotalSize = (checkType) => {
                             0
                         );
                         break;
-                    default:
-                        totalSize = value.length;
                 }
                 if (totalSize > variable.limit.totalSizeUpload) {
+                    value.forEach((v) => {
+                        delete v.buffer;
+                    });
                     return Promise.reject(message.FILES_SIZE_INVALID);
                 }
+                return totalSize;
             },
         },
+        bail: true,
     };
     return customSanitizer;
 };
@@ -179,8 +182,8 @@ module.exports = {
     password,
     email,
     description,
-    contents,
     mimetype,
+    buffer,
     requiredOption,
     isExisted,
     isMatched,

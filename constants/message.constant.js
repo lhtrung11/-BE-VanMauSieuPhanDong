@@ -35,9 +35,11 @@ const message = {
     UPLOAD_LIMITED: 'This upload contains more than the allowed amount',
     UPLOAD_FAILED: 'Upload files are not eligible',
     MIMETYPE_INVALID: 'We not support this type of file',
-    BUFFER_INVALID: '',
-    FILES_LENGTH_INVALID: '',
-    FILES_SIZE_INVALID: '',
+    BUFFER_INVALID: 'Buffer data not found',
+    FILES_LENGTH_INVALID:
+        'The files that you uploaded have exceed the allowed quantity',
+    FILES_SIZE_INVALID:
+        'The files that you uploaded have exceed the allowed amount',
 
     // Description
     COMPLETE_RESPONSE: 'Good response',
