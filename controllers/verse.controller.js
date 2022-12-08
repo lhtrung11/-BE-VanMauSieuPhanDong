@@ -4,6 +4,7 @@ const VerseIndex = require('../models/verseIndex.model');
 const VerseHistory = require('../models/verseHistory.model');
 const basicService = require('../services/basic.service');
 const verseService = require('../services/verse.service');
+const response = require('../helpers/responseHandler.helper');
 const { message, variable } = require('../constants');
 
 // const User = require("../models/user.model");
@@ -49,7 +50,6 @@ exports.createVerse = async (req, res, next) => {
                     _id: verseId,
                     setId: output.data?._id,
                     authorId: output.data?.authorId,
-                    content: saved.url,
                 },
                 VerseIndex
             );

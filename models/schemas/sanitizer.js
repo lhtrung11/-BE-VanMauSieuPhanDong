@@ -143,6 +143,7 @@ const limitTotalFiles = (checkType) => {
                     });
                     return Promise.reject(message.FILES_LENGTH_INVALID);
                 }
+                return totalFiles;
             },
         },
         bail: true,
