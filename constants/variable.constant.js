@@ -8,11 +8,16 @@ const env = {
     imgStorageClientSecret: process.env.IMG_STORAGE_CLIENT_SECRET,
     vidStorageClientId: process.env.VID_STORAGE_CLIENT_ID,
     vidStorageClientSecret: process.env.VID_STORAGE_CLIENT_SECRET,
-    gifStorageClientId: process.env.GIF_STORAGE_CLIENT_ID,
-    gifStorageClientSecret: process.env.GIF_STORAGE_CLIENT_SECRET,
-    audStorageClientId: process.env.AUD_STORAGE_CLIENT_ID,
-    audStorageClientSecret: process.env.AUD_STORAGE_CLIENT_SECRET,
+    imgStorageApiKey: process.env.IMG_STORAGE_API_KEY,
     redirectUri: process.env.REDIRECT_URI,
+};
+
+const path = {
+    databaseKey01: '../assets/keys/vmspd-db01.json',
+};
+
+const url = {
+    storageAuth: 'https://www.googleapis.com/auth/drive',
 };
 
 const initNumber = {
@@ -109,12 +114,6 @@ const status = {
         FALSE: 0,
         TRUE: 1,
     },
-};
-
-const path = {
-    register: '/api/auth/register',
-    login: '/api/auth/login',
-    refresh: '/api/auth/refresh',
 };
 
 const checkIsExistedType = {
@@ -240,6 +239,7 @@ module.exports = {
     role,
     status,
     path,
+    url,
     regex,
     httpStatus,
     title,

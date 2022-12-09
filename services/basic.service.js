@@ -42,11 +42,11 @@ exports.upload = async (input) => {
                     body: Readable.from(input.buffer),
                 },
             });
+            console.log(imgStorage.files.create);
             result = await imgStorage.files.get({
                 fileId: file.data.id,
                 fields: 'webViewLink, webContentLink',
             });
-            console.log({ file, result });
         }
         return result;
     } catch (error) {}
