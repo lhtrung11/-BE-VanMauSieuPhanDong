@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "img01-vmspd-cloudstorage",
+  "private_key_id": "1cb25de519a472dc09d600110230d6996285a427",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC3XWvayoxbSgpD\n8WHCr5yKVp/uiMhm2gAKKzCpVgpMNaevHoyxHEHwI+2ogsj841hIqyTcHNV+3EIW\n5D7boqMV7ZprODswWNVTGrQemTalqK7aEtBpwaw5Aiv9f2Pk7JXEQjiKbX6P+55s\n1uV6ZnoywFUcgiH9+FbFK6+Z8Jr7Bb+GVJemO0h1LX1UTK9ikCG09fL6efI8nWUV\nwQI3cuy9qaMt/5vDj0jbQyv8U4+jmm9gWmUZo8XJ/zZgLdy7agOkuUc/xM4UREq5\nZ4PtZkVQn8gQVGQ92AG/E71XKyCTQKSQml57yE/Om4mFNxQdGpAX8VvHpJQGNHY1\nRZz2z0ZJAgMBAAECggEAB+nvyDsasKvy4njOA9WJd40CjQx5Pbsl6kpv6LcObbiZ\nGp1CbDhwfhlG3hF69DMpscU1K4zRCA8giRVjwx3zVPRyyDLelxkWZ+ZMpM9vBNpR\nZZcPSKkzsiguVtwDJzOwyQ4km5DbOAKflUn3EH/QwVT8t2TEa84mjI70nru8LJ5B\nqru723+C2g/Ccx1LjyTsy9TZEIjkueomnUeM3ortfWq4MdXwXw2tbjMlqdRooCi+\npHPX0am5fMNQbUWug9/idcVC+OxmxNqnMKQbc/XyRueGlhKSeet9BnkVIp4wzOaC\nYgIxkl4VkRv0SGH34XslIkFlBG/D8YjssSgCl9T4kwKBgQDjvvbG5NtTQWjkAZRl\nAgWMPegb/4awJK/Z3z8Wx/IGFYANNn2UBQxdTNiD9XKO/tG8yawBk1WR5Jgt349Q\nPrRe9D+cejtyoEZM3yWYJ4bG1JAi8xEsspmm4Tephdj4mbfdJ6BcLkF4Bm28koCI\nBGERCgnN2e5IlkdKPYdNij3AOwKBgQDOHPM8Hw/TwNBF+i56Nznm5gDFV4sD7qrt\ngpv46ala1k1fEbKdLCgY9PRUlMmzb05N7TUhLqUqql1JV9YA9woObuH0bYeTLrdB\nkhikIVb8zRVB3TbbuZYm6z64ekTEuadBGHahXSueEOZPP4f1FvUVwg6J02Tk6RUc\nNk+Y4pWPSwKBgE8nvimevUQQhd5JVkRNEZSOp6+jfjKWbbAx0YGfeNT4gAsXl0ns\n/0EmRlKG6owcsNUG2wupI6KTavj2rJ7dTF98UOeX7DWI0yZAoJZjlopgssAS7zMz\n2AeSW4BGDwVImAj7jta7FPIceeOCn72ml/4OGR480n7UDG8XN4GRvKilAoGADRIQ\n6rMdkdQcYROodt+hsF7NlbYjfrBX7o/lzDclIjmM1oaMySLPuCVwiRyWXealFJQC\nVoRavQXovInxbEY+QQQPGC0J9+9yd5oILgBfP9DRlEeu/ugZ+YXZiGFYkxEi5iHj\nBACgj3mK4WOp/4ThLewMd/kL4OhXCl73VT6pNVkCgYEAr3NZWnQcdp7YRzuC1173\nw+xts/bGtyxJPWBmtvgARoW7kqKnWWlwpWSasZ1kiXh3E0q+ZqqyMJDfwK4Fj0JR\nn3EuvHeD/DbWhP0265DC3Ed+1p629bxyUOl/vF7ABjz6Vq3xQrWE+hhuWyW+g3Xj\nZWyyGUwyURqBgBzt+mkIGtU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vmspd-db01@img01-vmspd-cloudstorage.iam.gserviceaccount.com",
+  "client_id": "115311705777718713823",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vmspd-db01%40img01-vmspd-cloudstorage.iam.gserviceaccount.com"
+}

@@ -1,6 +1,3 @@
-// const dotenv = require('dotenv');
-// dotenv.config();
-
 const env = {
     port: process.env.APP_PORT,
     key: process.env.TOKEN_KEY,
@@ -12,8 +9,8 @@ const env = {
     redirectUri: process.env.REDIRECT_URI,
 };
 
-const path = {
-    databaseKey01: '../assets/keys/vmspd-db01.json',
+const staticValue = {
+    imgFolderId: '1F743CRKd1NT4XT8YG5X-r1Ru0WklPIb1',
 };
 
 const url = {
@@ -94,6 +91,7 @@ const defaultValue = {
     defaultFile: {
         defaultAvatarValue: 'default',
         defaultAvatarUrl: '../assets/images',
+        db01_key_json: 'vmspd_db01_key.json',
     },
     defaultPassword: 'guest123',
     defaultFileType: ['image', 'video', 'gif', 'longText', 'audio'],
@@ -238,7 +236,6 @@ module.exports = {
     env,
     role,
     status,
-    path,
     url,
     regex,
     httpStatus,
@@ -250,4 +247,5 @@ module.exports = {
     tokenType,
     initNumber,
     validateType,
+    staticValue,
 };

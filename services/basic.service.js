@@ -33,16 +33,18 @@ exports.upload = async (input) => {
         let file, result;
         if (input.mimetype.match(variable.regex.image)) {
             file = await imgStorage.files.create({
-                requestBody: {
+                resource: {
                     name: input.verseId,
                     mimeType: input.mimeType,
+                    parents: [variable.staticValue.imgFolderId],
                 },
                 media: {
                     mimeType: input.mimeType,
                     body: Readable.from(input.buffer),
                 },
+                fields: 'id',
             });
-            console.log(imgStorage.files.create);
+            console.log(`file: ${file?.id}`);
             result = await imgStorage.files.get({
                 fileId: file.data.id,
                 fields: 'webViewLink, webContentLink',
